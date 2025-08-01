@@ -1,0 +1,6 @@
+@Bank131Connector_HostAddress = http://localhost:5120
+
+GET {{Bank131Connector_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
