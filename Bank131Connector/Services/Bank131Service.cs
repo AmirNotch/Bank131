@@ -5,6 +5,7 @@ using Bank131Connector.Models.CreatingPaymentSessionDto;
 using Bank131Connector.Models.CreatingPaymentSessionDto.PaymentSessionClient;
 using Bank131Connector.Models.db;
 using Bank131Connector.Models.PaymentRequestDto;
+using Bank131Connector.Models.PaymentRequestDto.PaymentClient;
 using Bank131Connector.Repository.IRepository;
 using Bank131Connector.Validations;
 using IdGen;
@@ -159,19 +160,17 @@ public class Bank131Service
                 Status = responsePayout.Session.Status,
                 Amount = request.AmountDetails.Amount,
                 FeeAmount = null,
-                CardLast4 =
-                    responsePayout.Session.PayoutLists.Select(p => p.PaymentDetails.Card.Last4).FirstOrDefault(),
-                CardBrand =
-                    responsePayout.Session.PayoutLists.Select(p => p.PaymentDetails.Card.Brand).FirstOrDefault(),
-                Rrn = null,
-                AuthCode = null,
+                CardLast4 = responsePayout.Session.PayoutLists
+                    .Select(p => p.PaymentDetails?.Card?.Last4)
+                    .FirstOrDefault(),
+                CardBrand = responsePayout.Session.PayoutLists
+                    .Select(p => p.PaymentDetails?.Card?.Brand)
+                    .FirstOrDefault(),
                 RecipientName = paymentSessionRequest.FullName,
-                RecipientAccount = null,
-                RecipientBic = null,
                 RecipientEmail = responsePayout.Session.PayoutLists
-                    .Select(p => p.Customer.Contacts.Select(c => c.Email).FirstOrDefault()).FirstOrDefault(),
-                FiscalReceiptLink = null,
-                FiscalTaxReference = null
+                    .SelectMany(p => p.Customer?.Contacts ?? Enumerable.Empty<Contact>())
+                    .Select(c => c.Email)
+                    .FirstOrDefault()
             };
             
             await _bank131Repository.CreatePayout(payoutEntity, ct);
