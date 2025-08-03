@@ -10,6 +10,9 @@ public class PaymentSessionRequest
     [ValidNotEmptyString]
     public string Currency { get; set; }
     
+    [ValidCardNumber(IsOptional = false, UseLuhnCheck = true)]
+    public string CardNumber { get; set; }
+    
     [ValidNotEmptyString]
     public string FullName { get; set; }
 }

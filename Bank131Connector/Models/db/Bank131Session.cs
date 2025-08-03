@@ -13,5 +13,5 @@ public class Bank131Session
     public string InitCardNumber { get; set; }
     public string InitCardType { get; set; }
     
-    public Bank131Payment Payment { get; set; }
+    public virtual Bank131Payment Payment { get; set; }
 }

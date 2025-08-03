@@ -43,18 +43,22 @@ public class Bank131SessionConfiguration : IEntityTypeConfiguration<Bank131Sessi
 
         entity.Property(e => e.Metadata)
             .HasColumnName("metadata")
-            .HasColumnType("text");
+            .HasColumnType("text")
+            .IsRequired();
 
         entity.Property(e => e.NextAction)
             .HasColumnName("next_action")
-            .HasColumnType("varchar(20)");
+            .HasColumnType("varchar(20)")
+            .IsRequired();
 
         entity.Property(e => e.InitCardNumber)
             .HasColumnName("init_card_number")
-            .HasColumnType("varchar(16)");
+            .HasColumnType("varchar(16)")
+            .IsRequired();
 
         entity.Property(e => e.InitCardType)
             .HasColumnName("init_card_type")
-            .HasColumnType("varchar(20)");
+            .HasColumnType("varchar(20)")
+            .IsRequired();
     }
 }

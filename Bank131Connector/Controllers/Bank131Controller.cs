@@ -17,11 +17,11 @@ public class Bank131Controller : BaseController
         _back131service = back131service;
     }
     
-    [HttpGet("getActualCourseInfo")]
-    public async Task<IActionResult> GetActualCourseInfo(CancellationToken ct)
-    {
-        return await HandleRequestAsync(async token => await _back131service.GetActualCourseInfo(token), ct);
-    }
+    // [HttpGet("getActualCourseInfo")]
+    // public async Task<IActionResult> GetActualCourseInfo(CancellationToken ct)
+    // {
+    //     return await HandleRequestAsync(async token => await _back131service.GetActualCourseInfo(token), ct);
+    // }
     
     [HttpGet("CreatingPaymentSession")]
     public async Task<IActionResult> CreatingPaymentSession([FromBody] PaymentSessionRequest paymentSessionRequest,

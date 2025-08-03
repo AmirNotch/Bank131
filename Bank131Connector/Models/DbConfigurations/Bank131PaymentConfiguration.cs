@@ -12,8 +12,9 @@ public class Bank131PaymentConfiguration : IEntityTypeConfiguration<Bank131Payme
         entity.ToTable("bank131_payments");
 
         entity.Property(e => e.PaymentId)
+            .HasDefaultValueSql("uuid_generate_v4()")
             .HasColumnName("payment_id")
-            .HasColumnType("varchar(50)")
+            .HasColumnType("uuid")
             .IsRequired();
 
         entity.Property(e => e.SessionId)

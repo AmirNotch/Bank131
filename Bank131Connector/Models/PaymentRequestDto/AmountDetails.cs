@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Bank131Connector.Models.CreatingPaymentSessionDto.PaymentSessionClient;
+namespace Bank131Connector.Models.PaymentRequestDto;
 
 public class AmountDetails
 {
