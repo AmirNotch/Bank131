@@ -1,12 +1,12 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Bank131Connector.Models.PaymentRequestDto.PaymentClient;
+namespace Bank131Connector.Models.WebhookReadyToConfirmDto;
 
-public class PaymentDetailsResponse
+public class PayoutDetailsResponse
 {
     [JsonPropertyName("type")]
     public string Type { get; set; }
 
     [JsonPropertyName("card")]
-    public CardInfo Card { get; set; }
+    public CardInfoResponse Card { get; set; }
 }

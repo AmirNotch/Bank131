@@ -1,8 +1,10 @@
-﻿using System.Text.Json.Serialization;
+﻿using Bank131Connector.Models.CreatingPaymentSessionDto.PaymentSessionClient;
+using Bank131Connector.Models.PaymentRequestDto.PaymentClient;
 
-namespace Bank131Connector.Models.PaymentRequestDto.PaymentClient;
+namespace Bank131Connector.Models.WebhookReadyToConfirmDto;
+using System.Text.Json.Serialization;
 
-public class PayoutList
+public class PayoutListResponse
 {
     [JsonPropertyName("id")]
     public string Id { get; set; }

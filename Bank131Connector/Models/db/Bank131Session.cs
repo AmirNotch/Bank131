@@ -9,7 +9,7 @@ public class Bank131Session
     public decimal Amount { get; set; }
     public string Currency { get; set; }
     public string Metadata { get; set; }
-    public string NextAction { get; set; }
+    public string? NextAction { get; set; }
     public string InitCardNumber { get; set; }
     public string InitCardType { get; set; }
     

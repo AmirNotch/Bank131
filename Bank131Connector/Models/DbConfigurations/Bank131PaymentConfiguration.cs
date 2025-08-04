@@ -54,7 +54,7 @@ public class Bank131PaymentConfiguration : IEntityTypeConfiguration<Bank131Payme
 
         entity.Property(e => e.RecipientName)
             .HasColumnName("recipient_name")
-            .HasColumnType("varchar(200)");
+            .HasColumnType("nvarchar(200)");
 
         entity.Property(e => e.RecipientAccount)
             .HasColumnName("recipient_account")

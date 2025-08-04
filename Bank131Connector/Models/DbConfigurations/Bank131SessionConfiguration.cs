@@ -48,8 +48,7 @@ public class Bank131SessionConfiguration : IEntityTypeConfiguration<Bank131Sessi
 
         entity.Property(e => e.NextAction)
             .HasColumnName("next_action")
-            .HasColumnType("varchar(20)")
-            .IsRequired();
+            .HasColumnType("varchar(20)");
 
         entity.Property(e => e.InitCardNumber)
             .HasColumnName("init_card_number")

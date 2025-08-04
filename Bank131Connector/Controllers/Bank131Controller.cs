@@ -1,6 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 using Bank131Connector.Models.CreatingPaymentSessionDto;
+using Bank131Connector.Models.WebhookReadyToConfirmDto;
 using Bank131Connector.Services;
 using Bank131Connector.Validations;
 using Microsoft.AspNetCore.Mvc;
@@ -28,5 +29,12 @@ public class Bank131Controller : BaseController
         [FromHeader(Name = "X-Auth-Hash")] string clientHash, CancellationToken ct)
     {
         return await HandleRequestAsync(async token => await _back131service.CreatingPaymentSession(paymentSessionRequest, token), ct);
+    }
+    
+    [HttpPost("ReadyToConfirm")]
+    public async Task<IActionResult> ReadyToConfirm([FromBody] WebhookReadyToConfirmRequest webhookReadyToConfirmRequest,
+        [FromHeader(Name = "X-Auth-Hash")] string clientHash, CancellationToken ct)
+    {
+        return await HandleRequestAsync(async token => await _back131service.ReadyToConfirm(webhookReadyToConfirmRequest, token), ct);
     }
 }

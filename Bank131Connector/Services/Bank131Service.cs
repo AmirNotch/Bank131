@@ -10,6 +10,7 @@ using Bank131Connector.Repository.IRepository;
 using Bank131Connector.Validations;
 using IdGen;
 using AmountDetails = Bank131Connector.Models.CreatingPaymentSessionDto.PaymentSessionClient.AmountDetails;
+using Bank131Connector.Models.WebhookReadyToConfirmDto;
 
 namespace Bank131Connector.Services;
 
@@ -155,16 +156,16 @@ public class Bank131Service
 
             var payoutEntity = new Bank131Payment
             {
-                PaymentId = Guid.NewGuid(),
+                PaymentId = responsePayout.Session.PayoutLists.Select(p => p.Id).FirstOrDefault(),
                 SessionId = responsePayout.Session.Id,
                 Status = responsePayout.Session.Status,
                 Amount = request.AmountDetails.Amount,
                 FeeAmount = null,
                 CardLast4 = responsePayout.Session.PayoutLists
-                    .Select(p => p.PaymentDetails?.Card?.Last4)
+                    .Select(p => p.PayoutDetails?.Card?.Last4)
                     .FirstOrDefault(),
                 CardBrand = responsePayout.Session.PayoutLists
-                    .Select(p => p.PaymentDetails?.Card?.Brand)
+                    .Select(p => p.PayoutDetails?.Card?.Brand)
                     .FirstOrDefault(),
                 RecipientName = paymentSessionRequest.FullName,
                 RecipientEmail = responsePayout.Session.PayoutLists
@@ -209,6 +210,36 @@ public class Bank131Service
             _logger.LogError(ex, "[{Prefix}] Unexpected error while creating payment session", Constants.LogPrefixSession);
             return false;
         }
+    }
+
+    public async Task<bool> ReadyToConfirm(WebhookReadyToConfirmRequest webhookReadyToConfirmRequest, CancellationToken ct)
+    {
+        try
+        {
+            _logger.LogInformation("[{Prefix}] Starting processing for Updating Entity: {@Request}",
+                Constants.ReadyToConfirm, webhookReadyToConfirmRequest);
+
+            _logger.LogInformation("[{Prefix}] Updating Session and Payout to ready_confirm status", Constants.ReadyToConfirm);
+
+            await _bank131Repository.UpdatingSessionAndPayout(webhookReadyToConfirmRequest, ct);
+
+
+            // Детальное логирование результата
+            _logger.LogInformation("""
+                                   [{Prefix}] Successfully updated payout:
+                                   Updated payout and session: {@Payout}
+                                   """,
+                Constants.ReadyToConfirm,
+                webhookReadyToConfirmRequest); // Сериализация через @
+            
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "[{Prefix}] Unexpected error while creating payment session", Constants.ReadyToConfirm);
+            return false;
+        }
+
+        return true;
     }
 
     // Метод для маскировки номера карты
