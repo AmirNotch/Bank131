@@ -13,5 +13,8 @@ public class Bank131Session
     public string InitCardNumber { get; set; }
     public string InitCardType { get; set; }
     
+    // Новое поле
+    public int BackgroundJobConfirmed { get; set; } = 0;
+    
     public virtual Bank131Payment Payment { get; set; }
 }

@@ -7,6 +7,7 @@ public class Constants
     public readonly static string LogPrefixSession = "Session";
     public readonly static string LogPrefixPayout = "Payout";
     public readonly static string ReadyToConfirm = "ReadyToConfirm";
+    public readonly static string PaymentFinished = "PaymentFinished";
     public readonly static string PaymentMethodType = "card";
     public readonly static string CardType = "bank_card";
 }

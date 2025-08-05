@@ -78,4 +78,13 @@ public static class ValidationUtils
             HttpStatusCode.NotFound
         );
     }
+    
+    public static void AddSessionTypeError(IValidationStorage validationStorage, string sessionType, string? paymentId, string? sessionId)
+    {
+        validationStorage.AddError(
+            ErrorCode.InvalidData,
+            $"Session Type = {sessionType} Session Id = {sessionId} and Payment Id = {paymentId} Invalid Data",
+            HttpStatusCode.BadRequest
+        );
+    }
 }

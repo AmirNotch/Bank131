@@ -18,17 +18,17 @@ public class Bank131SessionConfiguration : IEntityTypeConfiguration<Bank131Sessi
 
         entity.Property(e => e.Status)
             .HasColumnName("status")
-            .HasColumnType("varchar(20)")
+            .HasColumnType("varchar(50)")
             .IsRequired();
 
         entity.Property(e => e.CreatedAt)
             .HasColumnName("created_at")
-            .HasColumnType("timestamp")
+            .HasColumnType("timestamp with time zone")
             .IsRequired();
 
         entity.Property(e => e.UpdatedAt)
             .HasColumnName("updated_at")
-            .HasColumnType("timestamp")
+            .HasColumnType("timestamp with time zone")
             .IsRequired();
 
         entity.Property(e => e.Amount)
@@ -48,7 +48,7 @@ public class Bank131SessionConfiguration : IEntityTypeConfiguration<Bank131Sessi
 
         entity.Property(e => e.NextAction)
             .HasColumnName("next_action")
-            .HasColumnType("varchar(20)");
+            .HasColumnType("varchar(30)");
 
         entity.Property(e => e.InitCardNumber)
             .HasColumnName("init_card_number")
@@ -58,6 +58,12 @@ public class Bank131SessionConfiguration : IEntityTypeConfiguration<Bank131Sessi
         entity.Property(e => e.InitCardType)
             .HasColumnName("init_card_type")
             .HasColumnType("varchar(20)")
+            .IsRequired();
+        
+        entity.Property(e => e.BackgroundJobConfirmed)
+            .HasColumnName("background_job_confirmed")
+            .HasColumnType("int")
+            .HasDefaultValue(0)
             .IsRequired();
     }
 }

@@ -24,7 +24,7 @@ public class Bank131PaymentConfiguration : IEntityTypeConfiguration<Bank131Payme
 
         entity.Property(e => e.Status)
             .HasColumnName("status")
-            .HasColumnType("varchar(20)")
+            .HasColumnType("varchar(50)")
             .IsRequired();
 
         entity.Property(e => e.Amount)
@@ -50,7 +50,7 @@ public class Bank131PaymentConfiguration : IEntityTypeConfiguration<Bank131Payme
 
         entity.Property(e => e.AuthCode)
             .HasColumnName("auth_code")
-            .HasColumnType("varchar(20)");
+            .HasColumnType("varchar(30)");
 
         entity.Property(e => e.RecipientName)
             .HasColumnName("recipient_name")
@@ -62,7 +62,7 @@ public class Bank131PaymentConfiguration : IEntityTypeConfiguration<Bank131Payme
 
         entity.Property(e => e.RecipientBic)
             .HasColumnName("recipient_bic")
-            .HasColumnType("varchar(20)");
+            .HasColumnType("varchar(30)");
 
         entity.Property(e => e.RecipientEmail)
             .HasColumnName("recipient_email")

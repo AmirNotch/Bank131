@@ -1,0 +1,8 @@
+C:\Users\TX_ATM\RiderProjects\Bank131\BackgroundBank131Service\obj\Debug\net8.0\BackgroundBank131Service.csproj.AssemblyReference.cache
+C:\Users\TX_ATM\RiderProjects\Bank131\BackgroundBank131Service\obj\Debug\net8.0\BackgroundBank131Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\TX_ATM\RiderProjects\Bank131\BackgroundBank131Service\obj\Debug\net8.0\BackgroundBank131Service.AssemblyInfoInputs.cache
+C:\Users\TX_ATM\RiderProjects\Bank131\BackgroundBank131Service\obj\Debug\net8.0\BackgroundBank131Service.AssemblyInfo.cs
+C:\Users\TX_ATM\RiderProjects\Bank131\BackgroundBank131Service\obj\Debug\net8.0\BackgroundBank131Service.csproj.CoreCompileInputs.cache
+C:\Users\TX_ATM\RiderProjects\Bank131\BackgroundBank131Service\obj\Debug\net8.0\BackgroundBank131Service.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\TX_ATM\RiderProjects\Bank131\BackgroundBank131Service\obj\Debug\net8.0\BackgroundBank131Service.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\TX_ATM\RiderProjects\Bank131\BackgroundBank131Service\obj\Debug\net8.0\BackgroundBank131Service.sourcelink.json

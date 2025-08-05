@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bank131Connector")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+665432e17bf9d18750193460da584904ba4900e4")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bank131Connector")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bank131Connector")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

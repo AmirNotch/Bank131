@@ -21,9 +21,9 @@ public class Bank131Client : IBank131Client
         _httpClient = httpClient;
     }
     
-    public async Task<(bool isValid, PaymentSessionResponse? paymentSessionResponse)> SendPaymentSessionAsync(PaymentSessionClientRequest paymentSessionClientRequest)
+    public async Task<(bool isValid, PaymentSessionResponse? paymentSessionResponse)> SendPaymentSessionAsync(PaymentSessionClientRequest paymentSessionClientRequest, CancellationToken ct)
     {
-        var session = await _httpClient.PostAsJsonAsync("/api/v2/session/create", paymentSessionClientRequest);
+        var session = await _httpClient.PostAsJsonAsync("/api/v2/session/create", paymentSessionClientRequest, cancellationToken: ct);
         
         if (!session.IsSuccessStatusCode)
         {

@@ -1,6 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 using Bank131Connector.Models.CreatingPaymentSessionDto;
+using Bank131Connector.Models.WebhookPaymentFinishedRequest;
 using Bank131Connector.Models.WebhookReadyToConfirmDto;
 using Bank131Connector.Services;
 using Bank131Connector.Validations;
@@ -24,7 +25,7 @@ public class Bank131Controller : BaseController
     //     return await HandleRequestAsync(async token => await _back131service.GetActualCourseInfo(token), ct);
     // }
     
-    [HttpGet("CreatingPaymentSession")]
+    [HttpPost("CreatingPaymentSession")]
     public async Task<IActionResult> CreatingPaymentSession([FromBody] PaymentSessionRequest paymentSessionRequest,
         [FromHeader(Name = "X-Auth-Hash")] string clientHash, CancellationToken ct)
     {
@@ -36,5 +37,12 @@ public class Bank131Controller : BaseController
         [FromHeader(Name = "X-Auth-Hash")] string clientHash, CancellationToken ct)
     {
         return await HandleRequestAsync(async token => await _back131service.ReadyToConfirm(webhookReadyToConfirmRequest, token), ct);
+    }
+    
+    [HttpPost("PaymentFinished")]
+    public async Task<IActionResult> PaymentFinished([FromBody] WebhookPaymentFinishedRequest webhookPaymentFinishedRequest,
+        [FromHeader(Name = "X-Auth-Hash")] string clientHash, CancellationToken ct)
+    {
+        return await HandleRequestAsync(async token => await _back131service.PaymentFinished(webhookPaymentFinishedRequest, token), ct);
     }
 }
